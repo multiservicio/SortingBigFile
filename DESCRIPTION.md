@@ -11,7 +11,7 @@ Lines are considered to be average in length so edge cases such as a file with j
 Boundary: Use any programming language you like for first approach, but we require the deliverable to be in Java/Scala so it can be tested on any common JVM. Please use standard libraries only, no batch or stream processing frameworks. Be as efficient as possible while avoiding using standard library sorting routines. Provide a rationale for your approach. Design schemas are welcome.
 
 
-Please note that the file.txt that we use to measure the performance of the result is generated via:  ruby -e 'a=STDIN.readlines;5000000.times do;b=[];16.times do; b << a[rand(a.size)].chomp end; puts b.join(" "); end' < /usr/share/dict/words > file.txt
+Please note that the file.txt that we use to measure the performance of the result is generated via:  ```ruby -e 'a=STDIN.readlines;5000000.times do;b=[];16.times do; b << a[rand(a.size)].chomp end; puts b.join(" "); end' < /usr/share/dict/words > file.txt```
 
 Please upload code to your bitbucket.org account so we can checkout from there. Please add also our collaborators:  dvpablo, paugay,  alexramirez, tomoki_kamo and pnikosis.
 
