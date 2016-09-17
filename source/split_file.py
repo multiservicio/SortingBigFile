@@ -15,6 +15,7 @@ class SplitFile:
         self.file_name = file_name
         self.chunk_size = chunk_size
         self.partial_file_name = partial_file_name
+        self.partial_files_count = 0
 
     # Main functionality of this class. To split given file into smaller sorted ones
     # In order to split and sort we will doing the following
@@ -35,19 +36,26 @@ class SplitFile:
             # More info -> http://stackoverflow.com/questions/14541010/pythons-function-readlinesn-behavior
             block_of_lines = file.readlines(self.chunk_size)
 
-            # We reached the end of the file
-            if not block_of_lines:
+            # If we did not reach the end of the file yet
+            if block_of_lines:
+                # Sort the lines in memory using Bubble Sort sorting algorithm
+                sorted_lines = InMemorySort.bubble_sort(block_of_lines)
+
+                # Save into partial file the sorted lines
+                self._dump_into_partial_file(sorted_lines, partial_file_number)
+
+                # Increment the partial file number, in this way we will have all the
+                # Partial files numbered
+                partial_file_number += 1
+
+            else:
                 do_we_continue = False
+        # We store the amount of partial files
+        self.partial_files_count = partial_file_number
 
-            # Sort the lines in memory using Bubble Sort sorting algorithm
-            sorted_lines = InMemorySort.bubble_sort(block_of_lines)
-
-            # Save into partial file the sorted lines
-            self._dump_into_partial_file(sorted_lines, partial_file_number)
-
-            # Increment the partial file number, in this way we will have all the
-            # Partial files numbered
-            partial_file_number += 1
+    # Return the amount of partial files generated
+    def get_amount_of_partial_files(self):
+        return self.partial_files_count
 
     # Private method that will dump the chunk of lines into a file
     # The names of such files is defined in the class variable PARTIAL_FILE_NAME
