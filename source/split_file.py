@@ -32,7 +32,7 @@ class SplitFile:
         while do_we_continue:
             # Chunk size is the size to read from the file 'at once'
             # this is size hint
-            # More info http://stackoverflow.com/questions/14541010/pythons-function-readlinesn-behavior
+            # More info -> http://stackoverflow.com/questions/14541010/pythons-function-readlinesn-behavior
             block_of_lines = file.readlines(self.chunk_size)
 
             # We reached the end of the file
@@ -57,6 +57,7 @@ class SplitFile:
         # As we know that the variable is string we can substitute the value
         # https://docs.python.org/3.4/library/stdtypes.html#str.format
         file = open(self.partial_file_name.format(partial_file_identifier), 'w')
+
         # Note: on writing we use the empty string and join since the input is a list
         # And we need to write it in the file as lines.
         file.write(''.join(chunk_of_lines))
