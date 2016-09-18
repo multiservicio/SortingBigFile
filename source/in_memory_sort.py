@@ -9,6 +9,7 @@ class InMemorySort:
     # https://en.wikipedia.org/wiki/Bubble_sort
     @staticmethod
     def bubble_sort(data: list) -> list:
+        print('In bubble sort... sorting:', len(data))
         for interval in range(len(data) - 1, 0, -1):
             # Range(interval) represents the index values from beginning to the interval of the list
             for index in range(interval):

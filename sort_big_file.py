@@ -9,7 +9,9 @@ if __name__ == '__main__':
     file = 'unsorted.txt'
 
     external_sorting = ExternalSorting(
-        chunk_size=memory_to_use
+        chunk_size=memory_to_use,
+        file_name=file
     )
 
-    external_sorting.sort(file)
+    print("Memory to use: ", memory_to_use)
+    external_sorting.sort()

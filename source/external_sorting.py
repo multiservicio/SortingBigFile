@@ -31,6 +31,7 @@ class ExternalSorting:
             chunk_size=self.chunk_size,
             partial_file_name=self.partial_file_name
         )
+        print('Splitting files...')
         split_files.split()
 
         # First we need to know how big is the file and then calculate the number of "divisions" of it
@@ -50,6 +51,7 @@ class ExternalSorting:
         merged_file = MergeFile(
             partial_files_list=partial_files
         )
+        print('Merging files...')
         merged_file.merge()
 
     # This "private" method will return the number of partial files we will split our big file.

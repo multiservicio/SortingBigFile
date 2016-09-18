@@ -64,6 +64,7 @@ class SplitFile:
     def _dump_into_partial_file(self, chunk_of_lines: list, partial_file_identifier: str):
         # As we know that the variable is string we can substitute the value
         # https://docs.python.org/3.4/library/stdtypes.html#str.format
+        print('Writing into partial file:', partial_file_identifier)
         file = open(self.partial_file_name.format(partial_file_identifier), 'w')
 
         # Note: on writing we use the empty string and join since the input is a list
