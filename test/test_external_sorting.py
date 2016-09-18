@@ -8,7 +8,7 @@ class TestExternalSorting(unittest.TestCase):
     def setUp(self):
         # Force to have it in 1K = 1 line
         size_in_bytes_of_each_partial = 1
-        self.file_name = 'test_external_sorting_unsorted.txt'
+        self.file_name = 'test_external_sorting_unsorted.partial'
         self.external_sorting = ExternalSorting(
             chunk_size=size_in_bytes_of_each_partial,
             file_name=self.file_name
