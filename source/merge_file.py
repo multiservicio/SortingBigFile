@@ -46,6 +46,8 @@ class MergeFile:
             line_to_write = self._pop_line_from_dict_of_first_lines(self._find_smaller_item_in_dictionary())
             sorted_file.write(line_to_write)
 
+        sorted_file.close()
+
     # This method will create an array of file handlers
     # it will contain all the partial files handlers
     def _create_file_handlers_for_partial_files(self) -> list:
@@ -74,11 +76,11 @@ class MergeFile:
                     # Here we are marking the file as exhausted (ended).
                     self.exhausted_files.add(i)
 
-            # This means that all the files are processed hence we do not have any more lines to sort.
-            if self.number_of_partial_files == len(self.exhausted_files):
-                return False
-            else:
-                return True
+        # This means that all the files are processed hence we do not have any more lines to sort.
+        if self.number_of_partial_files == len(self.exhausted_files):
+            return False
+        else:
+            return True
 
     # This method will be the one removing the values from the dictionary
     # The purpose is that once we need this line we pop it out of the dict
@@ -102,7 +104,8 @@ class MergeFile:
         for i in range(len(self.dict_of_first_lines_of_each_partial)):
             # We compare each value against the minimum and we carry on until we find another that is
             # smaller until the end of the dictionary
-            if self.dict_of_first_lines_of_each_partial[i] < str or min_item_index is None:
-                min_item_index = i
+            if self.dict_of_first_lines_of_each_partial[i] is not None:
+                if str is None or self.dict_of_first_lines_of_each_partial[i] < str:
+                    min_item_index = i
         return min_item_index
 
