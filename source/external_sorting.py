@@ -37,12 +37,19 @@ class ExternalSorting:
         # We will put this into a "private" method
         number_of_partial_files = split_files.get_amount_of_partial_files()
 
+        # Now we generate a list of all the files that are set to be merge
+        partial_files = self._create_list_of_partial_files(
+            number_of_partial_files=number_of_partial_files
+        )
+
         # Now we have the file already divided in number_of_partial_files and each of the partials
         # are already sorted within themselves.
         # Next is time to merge all those files into the final sorted one.
         # In order to merge there are several possible strategies.
         # According to https://en.wikipedia.org/wiki/Merge_algorithm we can use K way merging strategy
-        merged_file = MergeFile()
+        merged_file = MergeFile(
+            partial_files_list=partial_files
+        )
         merged_file.merge()
 
     # This "private" method will return the number of partial files we will split our big file.
@@ -59,3 +66,13 @@ class ExternalSorting:
         number_of_partial_files = (file_size / self.chunk_size) + 1
 
         return int(number_of_partial_files)
+
+    # This "private" method will provide a list of the names of all the generated partial
+    # Files. The purpose of this is to pass this list to the merge step so it knows
+    # Which files to merge
+    def _create_list_of_partial_files(self, number_of_partial_files: int) -> list:
+        partial_files_list = []
+        for i in range(number_of_partial_files):
+            partial_files_list.append(self.partial_file_name.format(i))
+
+        return partial_files_list
