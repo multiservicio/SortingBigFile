@@ -10,7 +10,6 @@ class MergeFile:
     def __init__(self, partial_files_list: list):
         self.partial_files_list = partial_files_list
         self.number_of_partial_files = len(self.partial_files_list)
-        self.sorted_file = None
 
         # We create a dict with the same amount of entries as partial files
         # In this dict we will be loading always the first line of each partial
@@ -26,8 +25,26 @@ class MergeFile:
 
     # This is the main method. Here is implemented the merging of the partial files into
     # a single one.
+    #
+    # Algorithm:
+    #   We get all the partial files open and we read the first lines of all of those files
+    #   We put all the lines in a dict structure. As all the partials are sorted the next step is to find
+    #   The smallest one among those lines.
+    #   Once we find the smallest one, we remove it form the dict and dump into the sorted file.
+    #   After this step we provision again the dictionary with the next line of that file (if we didn't reach EOF).
+    #   This loop will end when all the files are consumed.
+    #
     def merge(self):
-        pass
+        sorted_file = open('sorted_big_file.txt', 'w')
+        # Get all the file handlers of the partial files
+        list_of_partial_file_handlers = self._create_file_handlers_for_partial_files()
+
+        # Loop for merging.
+        # On each iteration we will be writing one line
+        # That line will be always the smallest string of all the pre-loaded lines on the dictionary.
+        while self._load_dict_of_first_lines_of_each_partial(list_of_partial_file_handlers):
+            line_to_write = self._pop_line_from_dict_of_first_lines(self._find_smaller_item_in_dictionary())
+            sorted_file.write(line_to_write)
 
     # This method will create an array of file handlers
     # it will contain all the partial files handlers
@@ -63,5 +80,29 @@ class MergeFile:
             else:
                 return True
 
+    # This method will be the one removing the values from the dictionary
+    # The purpose is that once we need this line we pop it out of the dict
+    # to write it into the merged file.
+    def _pop_line_from_dict_of_first_lines(self, index: int) -> str:
+        # We save the string (line)
+        line_str = self.dict_of_first_lines_of_each_partial[index]
+        # We mark it as None so the method '_load_dict_of_first_lines_of_each_partial' can load the next
+        # line (if there is next).
+        self.dict_of_first_lines_of_each_partial[index] = None
+        return line_str
 
+    # Here is where the N Way Merge takes place.
+    # In order to select the smaller (Alphabetically higher) index of the dictionary
+    # The implementation is as easy as iterating through the dictionary and compare each of them
+    # To find the smallest one
+    def _find_smaller_item_in_dictionary(self) -> int:
+        min_item_index = -1
+        str = None
+
+        for i in range(len(self.dict_of_first_lines_of_each_partial)):
+            # We compare each value against the minimum and we carry on until we find another that is
+            # smaller until the end of the dictionary
+            if self.dict_of_first_lines_of_each_partial[i] < str or min_item_index is None:
+                min_item_index = i
+        return min_item_index
 
