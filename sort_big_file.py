@@ -8,6 +8,7 @@ if __name__ == '__main__':
     # File to sort
     file = 'unsorted.txt'
 
+    # Creation of the object
     external_sorting = ExternalSorting(
         chunk_size=memory_to_use,
         file_name=file
