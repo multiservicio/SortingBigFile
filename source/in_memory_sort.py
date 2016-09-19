@@ -36,7 +36,6 @@ class InMemorySort:
     # Quick sort algorithm -> https://en.wikipedia.org/wiki/Quicksort
     @staticmethod
     def _quick_sort(list_of_strings: list, first_index: int, last_index: int):
-        #print('In quick sort... sorting:', len(list_of_strings))
         if first_index < last_index:
             pivot = InMemorySort._quick_sort_partition(list_of_strings, first_index, last_index)
             InMemorySort._quick_sort(list_of_strings, first_index, pivot - 1)
