@@ -40,9 +40,6 @@ class SplitFile:
             if block_of_lines:
                 # Sort the lines in memory using Bubble Sort sorting algorithm
                 sorted_lines = InMemorySort.sort(block_of_lines)
-                # sorted_lines = InMemorySort._bubble_sort(block_of_lines)
-                # block_of_lines.sort()
-                # sorted_lines = block_of_lines
 
                 # Save into partial file the sorted lines
                 self._dump_into_partial_file(sorted_lines, partial_file_number)
