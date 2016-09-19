@@ -24,7 +24,7 @@ We decided to split the code in four different classes:
 - ExternalSorting -> The one that controls the main flow.
 - SplitFile -> The one responsible for splitting the big file and sorting the partial files.
 - MergeFile -> The one to take those partial files and merge them into the final result.
-- InMemorySorting -> As the class with Static methods where we implemented the Bubble and Quick sort algorithms.
+- InMemorySorting -> As the class with Static methods, where we implemented the Bubble and Quick sort algorithms.
 
 Then we have a ```Test``` folder where rather than a true unit/integration tests we use them to execute partial areas of the software for debug purposes.
 
