@@ -99,14 +99,14 @@ class MergeFile:
     # To find the smallest one
     def _find_smaller_item_in_dictionary(self) -> int:
         min_item_index = -1
-        str = None
+        string = None
 
         for i in range(len(self.dict_of_first_lines_of_each_partial)):
             # We compare each value against the minimum and we carry on until we find another that is
             # smaller until the end of the dictionary
             if self.dict_of_first_lines_of_each_partial[i] is not None:
-                if str is None or self.dict_of_first_lines_of_each_partial[i] < str:
-                    str = self.dict_of_first_lines_of_each_partial[i]
+                if string is None or self.dict_of_first_lines_of_each_partial[i] < string:
+                    string = self.dict_of_first_lines_of_each_partial[i]
                     min_item_index = i
         return min_item_index
 

@@ -57,7 +57,7 @@ class SplitFile:
         self.partial_files_count = partial_file_number
 
     # Return the amount of partial files generated
-    def get_amount_of_partial_files(self):
+    def get_amount_of_partial_files(self) -> int:
         return self.partial_files_count
 
     # Private method that will dump the chunk of lines into a file

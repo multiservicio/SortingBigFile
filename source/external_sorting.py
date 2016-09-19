@@ -59,7 +59,7 @@ class ExternalSorting:
     # and the size of the current file. (for this we will use built in OS library)
     # The calculation will be the size of the file divided by the data we can/want to store in memory for the
     # sort of each of the partial files
-    def _get_number_of_partial_files(self, file_name: str):
+    def _get_number_of_partial_files(self, file_name: str) -> int:
         # Reference to OS stat and size -> https://docs.python.org/2/library/os.html#os.stat
         file_size = os.stat(file_name).st_size
 
