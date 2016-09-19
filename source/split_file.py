@@ -11,7 +11,7 @@ class SplitFile:
     # Chunk size (in Bytes) of the amount of bytes to read each time
     # This should be big enough and fit in memory
     # Partial file name for the new created partial sorted files
-    def __init__(self, file_name: str, chunk_size: int, partial_file_name: str = 'split_{0}.partial'):
+    def __init__(self, file_name: str, chunk_size: int, partial_file_name: str = '_split_{0}.partial'):
         self.file_name = file_name
         self.chunk_size = chunk_size
         self.partial_file_name = partial_file_name
@@ -39,7 +39,10 @@ class SplitFile:
             # If we did not reach the end of the file yet
             if block_of_lines:
                 # Sort the lines in memory using Bubble Sort sorting algorithm
-                sorted_lines = InMemorySort.bubble_sort(block_of_lines)
+                sorted_lines = InMemorySort.sort(block_of_lines)
+                # sorted_lines = InMemorySort._bubble_sort(block_of_lines)
+                # block_of_lines.sort()
+                # sorted_lines = block_of_lines
 
                 # Save into partial file the sorted lines
                 self._dump_into_partial_file(sorted_lines, partial_file_number)

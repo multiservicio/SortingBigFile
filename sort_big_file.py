@@ -2,8 +2,8 @@ from source.external_sorting import ExternalSorting
 
 # Main input of the program
 if __name__ == '__main__':
-    # We will use 1 MB of memory to sort in memory
-    memory_to_use = 1 * 1024 * 1024
+    # We will use 100 MB of memory to sort in memory
+    memory_to_use = 100 * 1024 * 1024
 
     # File to sort
     file = 'unsorted.txt'

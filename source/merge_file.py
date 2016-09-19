@@ -106,6 +106,7 @@ class MergeFile:
             # smaller until the end of the dictionary
             if self.dict_of_first_lines_of_each_partial[i] is not None:
                 if str is None or self.dict_of_first_lines_of_each_partial[i] < str:
+                    str = self.dict_of_first_lines_of_each_partial[i]
                     min_item_index = i
         return min_item_index
 
