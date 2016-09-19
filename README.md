@@ -93,7 +93,7 @@ python sort_big_file.py  32.43s user 1.47s system 95% cpu 35.570 total
 
 ## Comments
 
-As we observed in the results section our implementation is about 8 times slower than the in memory built in *sort* methods. 
+As we observed in the results section, our implementation is about 8 times slower than the in memory built in *sort* methods. 
 
 Playing a bit with the amount of memory to use with the in memory sorting implementation does not improve significally. We tried with 100MB, 200MB and 250MB and the times where all between 31 and 32 seconds.
 
