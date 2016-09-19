@@ -34,6 +34,9 @@ class InMemorySort:
         return data
 
     # Quick sort algorithm -> https://en.wikipedia.org/wiki/Quicksort
+    # Quicksort implementation is a direct translation of the pseudocode in the wiki page
+    # it uses recursion to split the list in half and keep doing that until the list is not
+    # possible to split anymore
     @staticmethod
     def _quick_sort(list_of_strings: list, first_index: int, last_index: int):
         if first_index < last_index:
@@ -41,6 +44,13 @@ class InMemorySort:
             InMemorySort._quick_sort(list_of_strings, first_index, pivot - 1)
             InMemorySort._quick_sort(list_of_strings, pivot + 1, last_index)
 
+    # Quick sort method partition
+    # This method is the responsible to select the pivot element (in this case randomly)
+    # Randomly to avoid the case where cost is O(n2)
+    # Then it goes through the given list and compares the elements against the pivot
+    # which we moved into the last index of the given list.
+    # If the index value is smaller than the pivot it gets swapped into the first index
+    # Then the list gets the smaller than the pivot at the beginning of the list
     @ staticmethod
     def _quick_sort_partition(list_of_strings: list, first_index: int, last_index: int) -> int:
         pivot = first_index + random.randrange(last_index - first_index + 1)
@@ -53,6 +63,8 @@ class InMemorySort:
         InMemorySort._swap_indexes(list_of_strings, first_index, last_index)
         return first_index
 
+    # This is just an extraction of same logic. Its needed to perform several times in the
+    # partition method so is nicer to have it as separate function
     @staticmethod
     def _swap_indexes(list_of_strings: list, index_a: int, index_b: int):
         temp = list_of_strings[index_a]
