@@ -8,7 +8,7 @@ Use any common programming language you like for the first approach. Please use 
 
 ## External Sorting Algorithm
 
-The file are big enought to not fit in memory so they need to be splitted into smaller ones that can be managed (sorted) on memory for efficiency and performance. 
+The file is big enough that they do not fit in memory so they need to be splitted into smaller ones that can be managed (sorted) on memory for efficiency and performance. 
 
 Steps:
 
