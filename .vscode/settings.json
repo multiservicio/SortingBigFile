@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "files.autoSave": "onFocusChange",
+    "workbench.colorTheme": "Darcula", 
+    "window.zoomLevel": 0,
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "Hack, Monaco, 'Courier New', monospace",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontSize": 13,
+    "python.linting.pylintEnabled": false
+}
