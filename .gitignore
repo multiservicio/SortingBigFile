@@ -2,4 +2,5 @@
 *.txt
 *.pyc
 *.partial
+!test/test_external_sorting_unsorted.partial
 
