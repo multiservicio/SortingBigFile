@@ -20,5 +20,5 @@ class TestExternalSorting(unittest.TestCase):
         # We are calling a "private" method in order to get the number of files it should be splitted
         calculated_partial_files = self.external_sorting._get_number_of_partial_files(self.file_name)
         self.external_sorting.sort()
-        self..assertEquals(calculated_partial_files, 2)
+        self.assertEqual(calculated_partial_files, 2)
 

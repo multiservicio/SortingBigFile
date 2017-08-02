@@ -18,5 +18,5 @@ class TestInMemorySort(unittest.TestCase):
         ]
 
     def test_bubble_sort(self):
-        sorted_lines = InMemorySort.bubble_sort(self.test_chunk_of_lines)
-        self.assertEquals(self.expected_sorted_lines, sorted_lines)
+        sorted_lines = InMemorySort._bubble_sort(self.test_chunk_of_lines)
+        self.assertEqual(self.expected_sorted_lines, sorted_lines)
