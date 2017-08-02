@@ -1,4 +1,5 @@
 import unittest
+import source
 
 from source.merge_file import MergeFile
 
@@ -6,7 +7,7 @@ from source.merge_file import MergeFile
 class TestMergeFile(unittest.TestCase):
     def setUp(self):
         self.merge_file = MergeFile(
-            partial_files_list=['test_partial0.partial', 'test_partial1.partial']
+            partial_files_list=['test/test_partial0.partial', 'test/test_partial1.partial']
         )
 
     def test_merge(self):
@@ -15,5 +16,5 @@ class TestMergeFile(unittest.TestCase):
             "codify microtomist roadless underlevel indictable sobber marline viridine amenia phrenicectomy metabasis mongrelly bacilliform teacherlike travertine inveigher\n"
         ]
         self.merge_file.merge()
-        sorted_file = open('sorted_big_file.txt').readlines()
+        sorted_file = open('test/sorted_big_file.txt').readlines()
         self.assertEquals(expected_sorted_file, sorted_file)

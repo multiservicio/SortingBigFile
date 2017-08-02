@@ -1,4 +1,5 @@
 import unittest
+import source
 
 from source.in_memory_sort import InMemorySort
 

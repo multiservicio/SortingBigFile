@@ -117,5 +117,5 @@ Possible causes:
 
 
 ## Author
-Pedro Díaz (name dot surname at kiosked dot com)
+Pedro Díaz
 
